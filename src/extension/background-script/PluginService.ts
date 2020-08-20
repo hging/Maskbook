@@ -2,12 +2,14 @@ import * as RedPacket from '../../plugins/Wallet/red-packet-fsm'
 import * as Wallet from '../../plugins/Wallet/wallet'
 import * as Gitcoin from '../../plugins/Gitcoin/Services'
 import * as FileService from '../../plugins/FileService/service'
+import * as Trader from '../../plugins/Trader/service'
 import type { ERC20TokenRecord, ManagedWalletRecord, ExoticWalletRecord } from '../../plugins/Wallet/database/types'
 
 const Plugins = {
     'maskbook.red_packet': RedPacket,
     'maskbook.wallet': Wallet,
     'maskbook.fileservice': FileService,
+    'maskbook.trader': Trader,
     'co.gitcoin': Gitcoin,
 } as const
 type Plugins = typeof Plugins

@@ -12,7 +12,7 @@ import {
 } from '../../../protocols/typed-message'
 
 const posts = new LiveSelector().querySelectorAll<HTMLDivElement>(
-    isMobileFacebook ? '.story_body_container ' : '.userContent',
+    isMobileFacebook ? '.story_body_container ' : '[data-testid] [role=article] [data-ad-preview="message"]',
 )
 
 export function collectPostsFacebook(this: SocialNetworkUI) {
@@ -21,7 +21,7 @@ export function collectPostsFacebook(this: SocialNetworkUI) {
             const root = new LiveSelector()
                 .replace(() => [metadata.realCurrent])
                 .filter((x) => x)
-                .closest('.userContentWrapper, [data-store]')
+                .closest(isMobileFacebook ? '[role=article]' : '[data-store]')
 
             // ? inject after comments
             const commentSelectorPC = root
@@ -54,6 +54,7 @@ export function collectPostsFacebook(this: SocialNetworkUI) {
                     return root.evaluate()[0]! as HTMLElement
                 }
                 rootNodeProxy = metadata
+                postContentNode = metadata.realCurrent!
             })()
 
             this.posts.set(metadata, info)
@@ -95,7 +96,6 @@ export function collectPostsFacebook(this: SocialNetworkUI) {
                 onRemove: () => this.posts.delete(metadata),
             }
         })
-        .setDOMProxyOption({ afterShadowRootInit: { mode: webpackEnv.shadowRootMode } })
         .startWatch({
             childList: true,
             subtree: true,
@@ -139,9 +139,9 @@ function getMetadataImages(node: DOMProxy): string[] {
     const parent = node.current.parentElement
 
     if (!parent) return []
-    const imgNodes = parent.querySelectorAll<HTMLElement>(
-        isMobileFacebook ? 'div>div>div>a>div>div>i.img' : '.userContentWrapper a[data-ploi]',
-    )
+    const imgNodes = isMobileFacebook
+        ? parent.querySelectorAll<HTMLImageElement>('div>div>div>a>div>div>i.img')
+        : parent.nextElementSibling?.querySelectorAll('img') || []
     if (!imgNodes.length) return []
     const imgUrls = isMobileFacebook
         ? (getComputedStyle(imgNodes[0]).backgroundImage || '')
@@ -150,7 +150,7 @@ function getMetadataImages(node: DOMProxy): string[] {
               .split(',')
               .filter(Boolean)
         : Array.from(imgNodes)
-              .map((node) => node.getAttribute('data-ploi') || '')
+              .map((node) => node.src)
               .filter(Boolean)
     if (!imgUrls.length) return []
     return imgUrls

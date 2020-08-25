@@ -46,6 +46,21 @@ export const appearanceSettings = createGlobalSettings<Appearance>('apperance', 
     primary: () => i18n.t('settings_appearance'),
 })
 
+export enum WholePostVisibility {
+    all = 'all',
+    enhancedOnly = 'enhancedOnly',
+    encryptedOnly = 'encryptedOnly',
+}
+
+export const currentWholePostVisibilitySettings = createGlobalSettings<WholePostVisibility>(
+    'whole post visibility',
+    WholePostVisibility.all,
+    {
+        primary: () => 'Whole Post Visibility',
+        secondary: () => '',
+    },
+)
+
 export const currentEthereumNetworkSettings = createGlobalSettings<EthereumNetwork>(
     'eth network',
     EthereumNetwork.Mainnet,

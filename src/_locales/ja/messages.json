@@ -135,6 +135,7 @@
     "decrypted_postbox_decrypting_finding_person_key": "Maskbook は公開鍵を探しています…",
     "decrypted_postbox_decrypting_finding_post_key": "Maskbook はこの投稿を復号化するために ポストキーを取得しています…",
     "decrypted_postbox_failed": "Maskbook の復号に失敗しました。",
+    "decrypted_postbox_author_mismatch": "最初の作者は {{name}}",
     "decrypted_postbox_not_verified": "電子署名が認証できません。",
     "decrypted_postbox_title": "Maskbook で暗号化されています:",
     "decrypted_postbox_verified": "署名が認証されています。",

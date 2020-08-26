@@ -98,6 +98,10 @@ export interface SocialNetworkUIInjections {
      */
     injectPostBox(): void
     /**
+     * This function should inject rthe page inspector
+     */
+    injectPageInspector(): void
+    /**
      * This is an optional function.
      *
      * This function should inject a link to open the options page.
@@ -300,6 +304,7 @@ export function activateSocialNetworkUI(): void {
                 ui.init(env, {})
                 ui.resolveLastRecognizedIdentity()
                 ui.injectPostBox()
+                ui.injectPageInspector()
                 ui.collectPeople()
                 ui.collectPosts()
                 ui.myIdentitiesRef.addListener((val) => {

@@ -83,6 +83,7 @@ export function collectPostsFacebook(this: SocialNetworkUI) {
                     info.postMetadataImages.add(url)
                     nextTypedMessage.push(makeTypedMessageImage(url))
                 }
+                // parse post content
                 info.parsedPostContent.value = makeTypedMessageCompound(nextTypedMessage)
             }
             collectPostInfo()

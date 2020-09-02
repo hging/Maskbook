@@ -17,7 +17,7 @@ export function PostDummy(props: PostDummyProps) {
     const wholePostVisibilitySettings = useValueRef(currentWholePostVisibilitySettings)
 
     const processedPostMessage = Array.from(PluginUI.values()).reduce(
-        (x, plugin) => (plugin.postMessageProcessor ? plugin.postMessageProcessor(x) : x),
+        (x, plugin) => plugin.postMessageProcessor?.(x) ?? x,
         parsedPostContent,
     )
     const postDummyVisible =

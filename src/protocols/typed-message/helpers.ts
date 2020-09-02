@@ -50,13 +50,3 @@ export function isTypedMessageEqual(message1: TypedMessage, message2: TypedMessa
             return eq(message1, message2)
     }
 }
-
-/**
- * Serialize typed message
- */
-export function serializeTypedMessage(message: TypedMessage | null) {
-    if (!message) return ''
-    if (isTypedMessageText(message)) return message.content
-    if (isTypedMessgaeAnchor(message)) return message.content
-    return ''
-}

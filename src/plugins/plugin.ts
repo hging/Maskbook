@@ -30,7 +30,5 @@ import { Flags } from '../utils/flags'
 plugins.add(GitcoinPluginDefine)
 plugins.add(RedPacketPluginDefine)
 if (Flags.file_service_enabled) plugins.add(FileServicePluginDefine)
-plugins.add(TraderPluginDefine)
-if (process.env.STORYBOOK) {
-    plugins.add(StorybookPluginDefine)
-}
+if (Flags.trader_enabled) plugins.add(TraderPluginDefine)
+if (process.env.STORYBOOK) plugins.add(StorybookPluginDefine)

@@ -52,9 +52,7 @@ export function FeedbackDialog(props: RedPacketDialogProps) {
                 <DialogContentText className={classes.content}>{message}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} color="primary">
-                    Close
-                </Button>
+                <Button onClick={onClose}>Close</Button>
             </DialogActions>
         </ShadowRootDialog>
     )

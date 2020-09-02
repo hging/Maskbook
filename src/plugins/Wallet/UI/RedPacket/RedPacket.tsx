@@ -20,7 +20,7 @@ export default function PluginRedPacket() {
     const classes = useStyles()
     return (
         <div>
-            <Button variant="contained" color="primary" className={classes.button}>
+            <Button variant="contained" className={classes.button}>
                 Open Red Packet
             </Button>
             <Typography color="primary" variant="body1" className={classes.detail}>

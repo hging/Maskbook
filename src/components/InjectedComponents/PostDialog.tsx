@@ -267,7 +267,6 @@ export function PostDialogUI(props: PostDialogUIProps) {
                         <Button
                             className={classes.button}
                             style={{ marginLeft: 'auto' }}
-                            color="primary"
                             variant="contained"
                             disabled={props.postBoxButtonDisabled}
                             onClick={props.onFinishButtonClicked}

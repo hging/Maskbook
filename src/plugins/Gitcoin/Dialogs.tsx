@@ -80,11 +80,9 @@ export function DonateSuccessDialog(props: DonateSuccessDialogProps) {
                 } ${amount}.`}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} color="primary">
-                    Close
-                </Button>
+                <Button onClick={onClose}>Close</Button>
                 {ui.internalName === 'twitter' ? (
-                    <Button onClick={onShare} color="primary" autoFocus>
+                    <Button onClick={onShare} autoFocus>
                         Share
                     </Button>
                 ) : null}
@@ -113,9 +111,7 @@ export function DonateFailDialog(props: DonateFailDialogProps) {
                 <DialogContentText className={classes.content}>{message}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose} color="primary">
-                    Close
-                </Button>
+                <Button onClick={onClose}>Close</Button>
             </DialogActions>
         </ShadowRootDialog>
     )
